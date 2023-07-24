@@ -4,14 +4,19 @@
 
 // Declare Functions
 float absoluteValue (float); // Function to calculate the absolute value of a number
-float squareRoot (float); // Function to calculate the square root of a number
+float squareRoot (float, float); // Function to calculate the square root of a number
 
 int main(void) {
 
+  // Get epsilon from terminal
+  float epsilon;
+  printf ("Enter epsilon: ");
+  scanf ("%f", &epsilon);
+  
   // Calculate square roots
-  printf ("squareRoot(2.0) = %f\n", squareRoot(2.0));
-  printf ("squareRoot(144.0) = %f\n", squareRoot(144.0));
-  printf ("squareRoot(17.5) = %f\n", squareRoot(17.5));
+  printf ("squareRoot(2.0) = %f\n", squareRoot(2.0, epsilon));
+  printf ("squareRoot(144.0) = %f\n", squareRoot(144.0, epsilon));
+  printf ("squareRoot(17.5) = %f\n", squareRoot(17.5, epsilon));
 
   return 0;
 }
@@ -25,8 +30,7 @@ float absoluteValue (float x) {
   return x;
 }
 
-float squareRoot (float x) {
-  const float epsilon = .00001;
+float squareRoot (float x, const float epsilon) {
   float guess = 1;
 
   while (absoluteValue (guess * guess - x) >= epsilon) 
